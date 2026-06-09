@@ -15,15 +15,6 @@
 -- require("myColors")
 
 
-------------------
----- MONITORS ----
-------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({ output = "DVI-I-2", mode = "2560x1440@120", position = "2560x0",    scale = 1 })  -- LG left
-hl.monitor({ output = "DVI-I-1", mode = "2560x1440@144", position = "0x0", scale = 1 })  -- LG right (primary)
-hl.monitor({ output = "eDP-1",   disabled = true })                                          -- laptop screen off (docked)
-hl.monitor({ output = "",        mode = "preferred", position = "auto", scale = "auto" })    -- fallback
 
 
 ---------------------
@@ -254,6 +245,11 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 require("bindings")
+
+---------------------
+---- MONITORS ----
+---------------------
+require("monitors")
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

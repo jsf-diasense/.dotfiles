@@ -15,11 +15,15 @@ hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. " + SHIFT + H",  hl.dsp.window.swap({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + K",    hl.dsp.window.swap({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + J",  hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + H",  hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + K",    hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + J",  hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }))
+hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.workspace.move({ monitor = "l" }))
+hl.bind(mainMod .. " + SHIFT + PERIOD", hl.dsp.workspace.move({ monitor = "r" }))
+hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }))
+
 
 
 -- Switch workspaces with mainMod + [0-9]
