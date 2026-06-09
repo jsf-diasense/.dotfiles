@@ -1,0 +1,9 @@
+profile docked {
+    output "LG Electronics LG ULTRAGEAR 602BNUF16342" mode 2560x1440@119.998 position 0,0 scale 1.0
+    output "LG Electronics LG ULTRAGEAR 602BNEX16436" mode 2560x1440@143.991 position 2560,0 scale 1.0
+    output "AU Optronics 0xB0AE Unknown" disable
+}
+
+profile undocked {
+    output "AU Optronics 0xB0AE Unknown" enable
+}

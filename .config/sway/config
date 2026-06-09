@@ -238,6 +238,7 @@ bar {
 
 ## Show network icon
 exec_always nm-applet --indicator
+exec_always kanshi
 
 # Get more wallpapers from https://github.com/dharmx/walls
 output * bg /usr/share/backgrounds/a_cartoon_of_a_lamp_post.jpg fill
