@@ -46,12 +46,12 @@ include /etc/sway/config-vars.d/*
 #
 # Example configuration:
 #
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
 #
 #   input type:keyboard {
 #       xkb_layout "eu"
