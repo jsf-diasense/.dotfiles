@@ -146,4 +146,5 @@
       "args": ["-lc", "opencode -c"]
     },
   },
+  "claudeCode.preferredLocation": "panel",
 }
