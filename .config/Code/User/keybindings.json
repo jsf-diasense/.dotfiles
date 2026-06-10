@@ -47,6 +47,30 @@
     },
 
     // ================================
+    // Webview pane navigation (same as global, but webviews capture keys first)
+    // ================================
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown",
+        "when": "webviewFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp",
+        "when": "webviewFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft",
+        "when": "webviewFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight",
+        "when": "webviewFocus"
+    },
+
+    // ================================
     // Quick Open navigation
     // ================================
 
