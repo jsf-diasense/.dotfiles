@@ -1,0 +1,150 @@
+{
+  "update.mode": "none",
+  "window.zoomLevel": -0.8,
+  "workbench.colorTheme": "Dark Modern",
+  "workbench.editor.useModal": "off",
+  "workbench.startupEditor": "none",
+  "workbench.editor.showTabs": "single",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.commandPalette.showAskInChat": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "editor.selectionClipboard": false,
+  "workbench.sideBar.location": "left",
+  "editor.lineNumbers": "relative",
+  "editor.wordWrap": "off",
+  "editor.renderWhitespace": "all",
+  "window.menuBarVisibility": "hidden",
+  "editor.rulers": [110],
+  // Be able to move opencode from one place to another
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.moveEditorToLeftGroup",
+    "workbench.action.moveEditorToRightGroup",
+    "workbench.action.toggleMaximizeEditorGroup",
+    "view.zoomIn",
+    "view.zoomOut",
+    "workbench.action.toggleSidebarVisibility",
+    "-workbench.action.quickOpen",
+  ],
+  // extensions
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "remote.SSH.defaultForwardedPorts": [],
+  "editor.minimap.enabled": false,
+  "python.terminal.activateEnvironment": false,
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.sortImports": "always",
+    },
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+    },
+  },
+  "[vue]": {
+    // "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.sortImports": "explicit",
+    },
+  },
+  "[svelte]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[markdown]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "off",
+    "prettier.proseWrap": "always",
+    "prettier.printWidth": 110,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off",
+    },
+  },
+  "[sh]": {
+    "editor.tabSize": 2,
+  },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "diffEditor.ignoreTrimWhitespace": false,
+  },
+  "[github-actions-workflow]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "diffEditor.ignoreTrimWhitespace": false,
+  },
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*",
+  },
+//   "terminal.integrated.env.linux": {
+//     "GIT_AUTHOR_NAME": "Jorge-Sintes_grazper",
+//     "GIT_AUTHOR_EMAIL": "jorge.sintes@grazper.com",
+//     "GIT_COMMITTER_NAME": "Jorge-Sintes_grazper",
+//     "GIT_COMMITTER_EMAIL": "jorge.sintes@grazper.com",
+//   },
+  "terminal.integrated.profiles.linux": {
+    "OpenCode": {
+      "path": "bash",
+      "args": ["-lc", "opencode"]
+    },
+    "OpenCode -c": {
+      "path": "bash",
+      "args": ["-lc", "opencode -c"]
+    },
+  },
+  "claudeCode.preferredLocation": "panel",
+}
