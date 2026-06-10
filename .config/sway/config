@@ -80,6 +80,7 @@ exec_always ckb-next --background
     bindsym $mod+Shift+o exec obsidian
 
     bindsym $mod+Shift+i exec $term -e nmtui
+    bindsym $mod+Shift+p exec $term -e bluetui
 
     bindsym $mod+e exec $term -e tmux new-session bash -i -c 'y; exec bash'
     bindsym $mod+c exec kitty open-vscode
