@@ -55,6 +55,10 @@ input type:touchpad {
 #       xkb_layout "eu"
 #   }
 #
+
+# Corsair driver, needs to be loaded to remap the G1 keys
+exec_always ckb-next --background
+
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
