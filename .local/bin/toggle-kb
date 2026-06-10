@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+
+devices_json=$(swaymsg -t get_inputs)
+
+first_kb=$(printf '%s\n' "$devices_json" | jq -c '[.[] | select(.type == "keyboard" and .vendor != 0)] | .[0]')
+current_index=$(printf '%s\n' "$first_kb" | jq -r '.xkb_active_layout_index')
+num_layouts=$(printf '%s\n' "$first_kb" | jq -r '.xkb_layout_names | length')
+next_index=$(( (current_index + 1) % num_layouts ))
+next_name=$(printf '%s\n' "$first_kb" | jq -r ".xkb_layout_names[$next_index]")
+
+printf '%s\n' "$devices_json" | jq -r '.[] | select(.type == "keyboard" and .vendor != 0) | .identifier' | while IFS= read -r keyboard; do
+  swaymsg input "$keyboard" xkb_switch_layout "$next_index" >/dev/null 2>&1 || true
+done
+
+case "$next_name" in
+  "English (US)") flag="🇺🇸" ;;
+  "Spanish")      flag="🇪🇸" ;;
+  "Danish")       flag="🇩🇰" ;;
+  *)              flag="🌐" ;;
+esac
+
+notify-send -u low "Keyboard layout" "$flag $next_name"

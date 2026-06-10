@@ -50,11 +50,11 @@ input type:touchpad {
     natural_scroll enabled
     middle_emulation enabled
 }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
-#
+input type:keyboard {
+    xkb_layout "us,es,dk"
+}
+
+bindsym $mod+n exec /home/jorge/.local/bin/toggle-kb
 
 # Corsair driver, needs to be loaded to remap the G1 keys
 exec_always ckb-next --background
