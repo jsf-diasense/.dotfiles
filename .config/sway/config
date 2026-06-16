@@ -263,3 +263,5 @@ output * bg /usr/share/backgrounds/a_cartoon_of_a_lamp_post.jpg fill
 bindsym $mod+Shift+x exec swaylock -c 000000
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
+# Line to fix GTK applications taking forever to launch
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
