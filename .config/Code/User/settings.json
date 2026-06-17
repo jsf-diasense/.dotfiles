@@ -1,6 +1,6 @@
 {
   "update.mode": "none",
-  "window.zoomLevel": -0.8,
+  // "window.zoomLevel": -0.8,
   "workbench.colorTheme": "Dark Modern",
   "workbench.editor.useModal": "off",
   "workbench.startupEditor": "none",
@@ -139,11 +139,11 @@
   "terminal.integrated.profiles.linux": {
     "OpenCode": {
       "path": "bash",
-      "args": ["-lc", "opencode"]
+      "args": ["-lc", "claude"]
     },
     "OpenCode -c": {
       "path": "bash",
-      "args": ["-lc", "opencode -c"]
+      "args": ["-lc", "claude -c"]
     },
   },
   "claudeCode.preferredLocation": "panel",
