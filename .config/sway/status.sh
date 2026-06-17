@@ -1,5 +1,12 @@
 #!/bin/bash
 
+sleep_pid=""
+
+_refresh() {
+    [ -n "$sleep_pid" ] && kill "$sleep_pid" 2>/dev/null
+}
+trap '_refresh' SIGUSR1
+
 while true; do
     # Volume
     vol=$(amixer get Master | grep "Right:" | cut -f 7,8 -d " ")
@@ -32,5 +39,8 @@ while true; do
         echo "${vol_str} | ${dt}"
     fi
 
-    sleep 1
+    sleep 1 &
+    sleep_pid=$!
+    wait "$sleep_pid" 2>/dev/null || true
+    sleep_pid=""
 done
