@@ -28,7 +28,7 @@ setsid sh -c '
     vt='"$sway_vt"'
     # Wait up to ~30s for a DisplayLink (evdi) monitor to reconnect.
     found=0; i=0
-    while [ "$i" -lt 60 ]; do
+    while [ "$i" -lt 360 ]; do
         for st in /sys/class/drm/card*-DVI-I-*/status; do
             [ -e "$st" ] || continue
             if [ "$(cat "$st")" = "connected" ]; then found=1; break; fi
