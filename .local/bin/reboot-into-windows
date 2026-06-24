@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# reboot-into-windows
+#
+# Finds the Windows entry in the GRUB config, sets it as the one-shot
+# boot target with grub-reboot, then reboots. Must be run as root.
+
+set -euo pipefail
+
+GRUB_CFG="/boot/grub/grub.cfg"
+
+if [[ "${EUID}" -ne 0 ]]; then
+    echo "This script must be run as root. Try: sudo $0" >&2
+    exit 1
+fi
+
+if [[ ! -r "${GRUB_CFG}" ]]; then
+    echo "Cannot read ${GRUB_CFG}" >&2
+    exit 1
+fi
+
+# Pull the menuentry title for Windows out of grub.cfg. Lines look like:
+#   menuentry 'Windows Boot Manager (on /dev/nvme0n1p1)' --class windows ... {
+entry="$(grep -i 'menuentry.*Windows' "${GRUB_CFG}" \
+    | head -n 1 \
+    | sed -nE "s/^[[:space:]]*menuentry[[:space:]]+'([^']*)'.*/\1/p")"
+
+if [[ -z "${entry}" ]]; then
+    echo "Could not find a Windows entry in ${GRUB_CFG}" >&2
+    echo "Matching lines were:" >&2
+    grep -i 'Windows' "${GRUB_CFG}" >&2 || true
+    exit 1
+fi
+
+echo "Found Windows GRUB entry: ${entry}"
+echo "Setting it as the next boot target..."
+grub-reboot "${entry}"
+
+echo "Rebooting into Windows now."
+systemctl reboot
