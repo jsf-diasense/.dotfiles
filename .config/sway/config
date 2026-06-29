@@ -295,3 +295,4 @@ bindsym $mod+Ctrl+Shift+Print exec /home/jorge/.local/bin/sway-screenshot -m reg
 
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
+exec_always /home/jorge/.local/bin/check-lid.sh
