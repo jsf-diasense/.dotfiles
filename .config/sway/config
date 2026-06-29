@@ -268,8 +268,8 @@ bar {
 
 ## Show network icon
 exec_always nm-applet --indicator
-exec_always kanshi
-exec swaync
+# exec_always kanshi
+exec_always swaync
 
 # Get more wallpapers from https://github.com/dharmx/walls
 output * bg /usr/share/backgrounds/a_cartoon_of_a_lamp_post.jpg fill
@@ -292,3 +292,6 @@ bindsym Ctrl+Print exec /home/jorge/.local/bin/sway-screenshot -m output --clipb
 bindsym $mod+Ctrl+Print exec /home/jorge/.local/bin/sway-screenshot -m window --clipboard-only
 # Screenshot a region clip only
 bindsym $mod+Ctrl+Shift+Print exec /home/jorge/.local/bin/sway-screenshot -m region --clipboard-only
+
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable

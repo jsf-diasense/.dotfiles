@@ -41,3 +41,7 @@ had to power-cycle. Two separate causes, two fixes:
 
 ### Tmux
 Follow the guide in [tpm](https://github.com/tmux-plugins/tpm)
+
+### Clamshell Mode
+I think this should be enough to fix the issue of the outputs.
+https://github.com/swaywm/sway/wiki#clamshell-mode
