@@ -147,4 +147,15 @@
     },
   },
   "claudeCode.preferredLocation": "panel",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+  },
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
+  }
 }
