@@ -1,0 +1,14 @@
+profile laptop {
+    output eDP-1 enable mode 1920x1200@60.096Hz position 0,0 scale 1.0
+}
+
+profile home {
+    output eDP-1 enable mode 1920x1200@60.096Hz position 0,0 scale 1.0
+    output "Dell Inc. DELL U2718Q FN84K842097L" enable mode 3840x2160@60Hz position 1920,0 scale 1.5
+}
+
+profile office {
+    output eDP-1 enable mode 1920x1200@60.096Hz position 0,0 scale 1.0
+    output "LG Electronics LG ULTRAGEAR 602BNUF16342" enable mode 2560x1440@144Hz position 1920,0 scale 1.0
+    output "LG Electronics LG ULTRAGEAR 602BNEX16436" enable mode 2560x1440@120Hz position 4480,0 scale 1.0
+}

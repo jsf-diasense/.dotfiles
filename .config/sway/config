@@ -14,7 +14,6 @@ set $menu wmenu-run
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
-#
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # This is commented in Debian, because the Sway wallpaper files are in a separate
 # package `sway-backgrounds`. Installing this package drops a config file to
@@ -33,15 +32,19 @@ include /etc/sway/config-vars.d/*
 #
 
 # Had to install swayidle separately.
-# NOTE: we deliberately never suspend. Resume from s2idle hard-hangs the GPU on
-# this hybrid Intel+NVIDIA + DisplayLink laptop (i915 PHY fails to power up),
-# forcing a reboot. So idle just locks and powers the displays off; it stays on.
+# NOTE: we deliberately never suspend, AND never let the compositor power the
+# outputs off. On this hybrid Intel+NVIDIA + DisplayLink ThinkPad, any
+# compositor-driven display power transition can hard-hang a GPU and force a
+# reboot:
+#   - s2idle resume: i915 PHY fails to power up.
+#   - DPMS 'output * power off' -> 'power on': on 2026-06-30, undocked on the
+#     internal i915 eDP panel, the panel failed to re-power on activity -> black
+#     screen, no recovery, had to hold the power button (next boot's ext4 journal
+#     recovery confirmed the unclean cut).
+# So idle ONLY locks; the screen stays on (locked). To blank when undocked,
+# close the lid -- the lid:on bindswitch below disables eDP-1 on its own.
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
-#
-# This locks the screen after 300s of inactivity, then powers the displays off
-# after another 300s, and powers them back on when there is activity.
+    timeout 300 'swaylock -f -c 000000'
 
 # Kill the other auto-suspend triggers for the same reason (see note above):
 #  - gnome-settings-daemon would suspend on idle (esp. on battery, 15 min);
@@ -268,7 +271,7 @@ bar {
 
 ## Show network icon
 exec_always nm-applet --indicator
-# exec_always kanshi
+exec_always sh -c 'pkill -x kanshi; exec kanshi'
 exec_always swaync
 
 # Get more wallpapers from https://github.com/dharmx/walls
@@ -293,6 +296,9 @@ bindsym $mod+Ctrl+Print exec /home/jorge/.local/bin/sway-screenshot -m window --
 # Screenshot a region clip only
 bindsym $mod+Ctrl+Shift+Print exec /home/jorge/.local/bin/sway-screenshot -m region --clipboard-only
 
+# Lid stuff. Taken from https://github.com/swaywm/sway/wiki#clamshell-mode
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 exec_always /home/jorge/.local/bin/check-lid.sh
+
+for_window [app_id="spectrum-ui"] floating enable
