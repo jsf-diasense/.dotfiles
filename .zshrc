@@ -65,6 +65,8 @@ alias ls='ls --color'
 alias vim='nvim'
 alias o='opencode'
 alias oc='opencode -c'
+alias c='claude'
+alias cc='claude -c'
 
 # Shell integrations
 eval "$(fzf --zsh)"

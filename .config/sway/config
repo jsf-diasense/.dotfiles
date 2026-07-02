@@ -271,7 +271,7 @@ bar {
 
 ## Show network icon
 exec_always nm-applet --indicator
-exec_always sh -c 'pkill -x kanshi; exec kanshi'
+# exec_always sh -c 'pkill -x kanshi; exec kanshi'
 exec_always swaync
 
 # Get more wallpapers from https://github.com/dharmx/walls
@@ -285,16 +285,22 @@ exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CUR
 
 # Screenshot a monitor
 bindsym Print exec /home/jorge/.local/bin/sway-screenshot -m output -o ~/Pictures/Screenshots
+bindsym F11 exec /home/jorge/.local/bin/sway-screenshot -m output -o ~/Pictures/Screenshots
 # Screenshot a window
 bindsym $mod+Print exec /home/jorge/.local/bin/sway-screenshot -m window -o ~/Pictures/Screenshots
+bindsym $mod+F11 exec /home/jorge/.local/bin/sway-screenshot -m window -o ~/Pictures/Screenshots
 # Screenshot a region
 bindsym $mod+Shift+Print exec /home/jorge/.local/bin/sway-screenshot -m region -o ~/Pictures/Screenshots
+bindsym $mod+Shift+F11 exec /home/jorge/.local/bin/sway-screenshot -m region -o ~/Pictures/Screenshots
 # Screenshot a monitor clip only
 bindsym Ctrl+Print exec /home/jorge/.local/bin/sway-screenshot -m output --clipboard-only
+bindsym Ctrl+F11 exec /home/jorge/.local/bin/sway-screenshot -m output --clipboard-only
 # Screenshot a window clip only
 bindsym $mod+Ctrl+Print exec /home/jorge/.local/bin/sway-screenshot -m window --clipboard-only
+bindsym $mod+Ctrl+F11 exec /home/jorge/.local/bin/sway-screenshot -m window --clipboard-only
 # Screenshot a region clip only
 bindsym $mod+Ctrl+Shift+Print exec /home/jorge/.local/bin/sway-screenshot -m region --clipboard-only
+bindsym $mod+Ctrl+Shift+F11 exec /home/jorge/.local/bin/sway-screenshot -m region --clipboard-only
 
 # Lid stuff. Taken from https://github.com/swaywm/sway/wiki#clamshell-mode
 bindswitch --reload --locked lid:on output eDP-1 disable
