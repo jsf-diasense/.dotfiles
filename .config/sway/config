@@ -271,7 +271,7 @@ bar {
 
 ## Show network icon
 exec_always nm-applet --indicator
-# exec_always sh -c 'pkill -x kanshi; exec kanshi'
+exec_always sh -c 'pkill -x kanshi; exec kanshi'
 exec_always swaync
 
 # Get more wallpapers from https://github.com/dharmx/walls
