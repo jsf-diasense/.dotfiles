@@ -89,3 +89,7 @@ function y() {
   rm -f -- "$tmp"
 }
 
+
+# opencode
+export PATH=/home/jorge/.opencode/bin:$PATH
+export EDITOR=nvim
