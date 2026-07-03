@@ -139,11 +139,11 @@
   "terminal.integrated.profiles.linux": {
     "OpenCode": {
       "path": "bash",
-      "args": ["-lc", "claude"]
+      "args": ["-lc", "opencode"]
     },
     "OpenCode -c": {
       "path": "bash",
-      "args": ["-lc", "claude -c"]
+      "args": ["-lc", "opencode -c"]
     },
   },
   "claudeCode.preferredLocation": "panel",
