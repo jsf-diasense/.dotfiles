@@ -133,3 +133,4 @@ function y() {
 
 alias c='claude'
 alias cc='claude -c'
+export EDITOR='nvim'

@@ -14,7 +14,7 @@
   "editor.lineNumbers": "relative",
   "editor.wordWrap": "off",
   "editor.renderWhitespace": "all",
-  "window.menuBarVisibility": "hidden",
+  "window.menuBarVisibility": "toggle",
   "editor.rulers": [110],
   // Be able to move opencode from one place to another
   "terminal.integrated.commandsToSkipShell": [
@@ -26,6 +26,8 @@
     "workbench.action.toggleSidebarVisibility",
     "-workbench.action.quickOpen",
   ],
+  // Opencode looks like crap on Wayland, so disable GPU acceleration for the terminal
+  "terminal.integrated.gpuAcceleration": "off",
   // extensions
   "git.confirmSync": false,
   "git.autofetch": true,
@@ -131,19 +133,19 @@
     "*.s3db": "${capture}.${extname}-*",
   },
 //   "terminal.integrated.env.linux": {
-//     "GIT_AUTHOR_NAME": "Jorge-Sintes_grazper",
-//     "GIT_AUTHOR_EMAIL": "jorge.sintes@grazper.com",
-//     "GIT_COMMITTER_NAME": "Jorge-Sintes_grazper",
-//     "GIT_COMMITTER_EMAIL": "jorge.sintes@grazper.com",
+//     "GIT_AUTHOR_NAME": "JorgeSintes",
+//     "GIT_AUTHOR_EMAIL": "jorge.sintes@gmail.com",
+//     "GIT_COMMITTER_NAME": "JorgeSintes",
+//     "GIT_COMMITTER_EMAIL": "jorge.sintes@gmail.com",
 //   },
   "terminal.integrated.profiles.linux": {
     "OpenCode": {
       "path": "bash",
-      "args": ["-lc", "opencode"]
+      "args": ["-lc", "export EDITOR='code --wait' && opencode"]
     },
     "OpenCode -c": {
       "path": "bash",
-      "args": ["-lc", "opencode -c"]
+      "args": ["-lc", "export EDITOR='code --wait' && opencode -c"]
     },
   },
   "claudeCode.preferredLocation": "panel",
@@ -160,5 +162,6 @@
   },
   "files.associations": {
     "config": "properties"
-  }
+  },
+  "jupyter.askForKernelRestart": false
 }
