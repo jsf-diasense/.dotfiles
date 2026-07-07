@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Copy git identity exports to the clipboard, for pasting into a shared server
+# session so commits made there are attributed to me.
+set -euo pipefail
+
+read -r -d '' EXPORTS <<'EOF' || true
+export GIT_AUTHOR_NAME="JorgeSintes"
+export GIT_AUTHOR_EMAIL="jorge.sintes@gmail.com"
+export GIT_COMMITTER_NAME="JorgeSintes"
+export GIT_COMMITTER_EMAIL="jorge.sintes@gmail.com"
+EOF
+
+if command -v wl-copy >/dev/null 2>&1; then
+    printf '%s\n' "$EXPORTS" | wl-copy
+elif command -v xclip >/dev/null 2>&1; then
+    printf '%s\n' "$EXPORTS" | xclip -selection clipboard
+else
+    echo "No clipboard tool found (wl-copy/xclip)" >&2
+    exit 1
+fi
+
+echo "Copied git identity exports to clipboard:"
+printf '%s\n' "$EXPORTS"

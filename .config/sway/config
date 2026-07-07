@@ -9,7 +9,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu wmenu-run
+set $menu PATH="$HOME/.local/bin:$PATH" wmenu-run
 
 include /etc/sway/config-vars.d/*
 
@@ -44,7 +44,8 @@ include /etc/sway/config-vars.d/*
 # So idle ONLY locks; the screen stays on (locked). To blank when undocked,
 # close the lid -- the lid:on bindswitch below disables eDP-1 on its own.
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000'
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'systemctl suspend'
 
 # Kill the other auto-suspend triggers for the same reason (see note above):
 #  - gnome-settings-daemon would suspend on idle (esp. on battery, 15 min);
@@ -277,7 +278,7 @@ exec_always swaync
 # Get more wallpapers from https://github.com/dharmx/walls
 output * bg /usr/share/backgrounds/a_cartoon_of_a_lamp_post.jpg fill
 
-bindsym $mod+Shift+x exec swaylock -c 000000
+bindsym $mod+Shift+x exec swaylock -c 000000 -f
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
 # Line to fix GTK applications taking forever to launch
