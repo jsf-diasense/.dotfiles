@@ -165,7 +165,7 @@
         "key": "ctrl+\\",
         "command": "workbench.action.terminal.newWithProfile",
         "args": {
-            "profileName": "OpenCode",
+            "profileName": "ClaudeCode",
             "location": "editor",
         }
     },
@@ -173,7 +173,7 @@
         "key": "ctrl+shift+\\",
         "command": "workbench.action.terminal.newWithProfile",
         "args": {
-            "profileName": "OpenCode -c",
+            "profileName": "ClaudeCode -c",
             "location": "editor",
         }
     },

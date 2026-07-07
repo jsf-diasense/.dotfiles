@@ -139,13 +139,13 @@
 //     "GIT_COMMITTER_EMAIL": "jorge.sintes@gmail.com",
 //   },
   "terminal.integrated.profiles.linux": {
-    "OpenCode": {
+    "ClaudeCode": {
       "path": "bash",
-      "args": ["-lc", "export EDITOR='code --wait' && opencode"]
+      "args": ["-lc", "claude"]
     },
-    "OpenCode -c": {
+    "ClaudeCode -c": {
       "path": "bash",
-      "args": ["-lc", "export EDITOR='code --wait' && opencode -c"]
+      "args": ["-lc", "claude -c"]
     },
   },
   "claudeCode.preferredLocation": "panel",
@@ -163,5 +163,6 @@
   "files.associations": {
     "config": "properties"
   },
-  "jupyter.askForKernelRestart": false
+  "jupyter.askForKernelRestart": false,
+  "security.workspace.trust.untrustedFiles": "open"
 }
