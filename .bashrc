@@ -131,6 +131,6 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
-alias c='claude'
-alias cc='claude -c'
+alias o='claude'
+alias oc='claude -c'
 export EDITOR='nvim'

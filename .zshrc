@@ -63,10 +63,10 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Aliases
 alias ls='ls --color'
 alias vim='nvim'
-alias o='opencode'
-alias oc='opencode -c'
-alias c='claude'
-alias cc='claude -c'
+# alias o='opencode'
+# alias oc='opencode -c'
+alias o='claude'
+alias oc='claude -c'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -90,6 +90,4 @@ function y() {
 }
 
 
-# opencode
-export PATH=/home/jorge/.opencode/bin:$PATH
 export EDITOR=nvim
