@@ -1,0 +1,29 @@
+{
+  "model": "claude-fable-5[1m]",
+  "theme": "dark",
+  "inputNeededNotifEnabled": false,
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.cwd // \"\"' | { read -r d; notify-send -a \"Claude Code\" -i \"$HOME/.local/share/icons/claude.svg\" \"Claude Code — done\" \"Finished working in ${d##*/}\"; } 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.message // \"Claude needs your input\"' | { read -r m; notify-send -u critical -a \"Claude Code\" -i \"$HOME/.local/share/icons/claude.svg\" \"Claude Code — input needed\" \"$m\"; } 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
