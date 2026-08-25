@@ -1,5 +1,8 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+bindsym Super_L nop
+bindsym Super_R nop
+
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -100,6 +103,7 @@ exec_always ckb-next --background
     bindsym $mod+Shift+p exec $term -e bluetui
 
     bindsym $mod+e exec $term -e tmux new-session bash -i -c 'y; exec bash'
+    bindsym $mod+Shift+e exec thunar
     bindsym $mod+c exec kitty open-vscode
     bindsym $mod+Shift+c exec kitty open-vscode-remote
 
@@ -183,8 +187,8 @@ exec_always ckb-next --background
 
     # Switch the current container between different layout styles
     bindsym $mod+Shift+s layout stacking
-    bindsym $mod+Shift+w layout tabbed
-    bindsym $mod+Shift+e layout toggle split
+    bindsym $mod+Shift+t layout tabbed
+    bindsym $mod+Shift+y layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
