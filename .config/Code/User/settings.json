@@ -103,6 +103,21 @@
       "other": "off",
     },
   },
+  "[skill]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "off",
+    "prettier.proseWrap": "always",
+    "prettier.printWidth": 110,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off",
+    },
+  },
   "[sh]": {
     "editor.tabSize": 2,
   },

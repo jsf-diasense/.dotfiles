@@ -89,5 +89,4 @@ function y() {
   rm -f -- "$tmp"
 }
 
-
 export EDITOR=nvim

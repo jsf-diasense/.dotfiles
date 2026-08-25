@@ -1,7 +1,5 @@
 {
-  "model": "claude-fable-5[1m]",
-  "theme": "dark",
-  "inputNeededNotifEnabled": false,
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -25,5 +23,8 @@
         ]
       }
     ]
-  }
+  },
+  "effortLevel": "medium",
+  "theme": "dark",
+  "inputNeededNotifEnabled": false
 }
