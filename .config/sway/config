@@ -75,6 +75,7 @@ input type:keyboard {
 }
 
 bindsym $mod+n exec /home/jorge/.local/bin/toggle-kb
+bindsym $mod+i exec /home/jorge/.local/bin/toggle-warp
 
 # Corsair driver, needs to be loaded to remap the G1 keys
 exec_always ckb-next --background
@@ -106,6 +107,8 @@ exec_always ckb-next --background
     bindsym $mod+Shift+e exec thunar
     bindsym $mod+c exec kitty open-vscode
     bindsym $mod+Shift+c exec kitty open-vscode-remote
+    bindsym $mod+v exec kitty herdr
+    bindsym $mod+Shift+v exec kitty open-herdr-remote
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -180,10 +183,10 @@ exec_always ckb-next --background
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
+    # $mod+b for horizontal splits ($mod+v is taken by herdr)
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+Shift+s layout stacking

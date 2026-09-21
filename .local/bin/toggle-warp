@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Toggle Cloudflare WARP (warp-cli) between connected and disconnected,
+# and send a desktop notification with the result.
+
+status=$(warp-cli status 2>/dev/null | sed -n 's/^Status update: *//p' | head -1)
+
+if [[ $status == Connected* ]]; then
+    if warp-cli disconnect >/dev/null 2>&1; then
+        notify-send -a WARP -i network-vpn-disconnected "WARP" "Disconnected"
+    else
+        notify-send -u critical -a WARP "WARP" "Failed to disconnect"
+    fi
+else
+    if warp-cli connect >/dev/null 2>&1; then
+        notify-send -a WARP -i network-vpn "WARP" "Connected"
+    else
+        notify-send -u critical -a WARP "WARP" "Failed to connect"
+    fi
+fi
