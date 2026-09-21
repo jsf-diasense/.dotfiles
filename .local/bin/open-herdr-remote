@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+hosts=(lab03 lab02 hpc)
+
+if [[ $# -eq 1 ]]; then
+    host=$1
+else
+    host=$(printf '%s\n' "${hosts[@]}" | fzf --prompt='host> ' --header='Select remote host')
+fi
+
+if [[ -z $host ]]; then
+    exit 0
+fi
+
+exec herdr --remote "$host"
