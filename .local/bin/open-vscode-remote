@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+hosts=(lab03 lab02 hpc)
+
+if [[ $# -eq 2 ]]; then
+    host=$1
+    selected=$2
 else
-    selected=$(ssh lab "find ~/Documents ~/diasense -mindepth 1 -maxdepth 1 \( -type d -o -name '*.code-workspace' \)" | fzf)
+    host=$(printf '%s\n' "${hosts[@]}" | fzf --prompt='host> ' --header='Select remote host')
+    if [[ -z $host ]]; then
+        exit 0
+    fi
+    selected=$(ssh "$host" "find ~/Documents ~/diasense -mindepth 1 -maxdepth 1 \( -type d -o -name '*.code-workspace' \)" | fzf --prompt="$host> ")
 fi
 
 if [[ -z $selected ]]; then
     exit 0
 fi
 
-code --remote ssh-remote+lab "$selected"
+code --remote "ssh-remote+$host" "$selected"
