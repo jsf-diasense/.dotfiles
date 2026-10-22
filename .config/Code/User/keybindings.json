@@ -286,4 +286,8 @@
         "key": "ctrl+m",
         "command": "-editor.action.toggleTabFocusMode"
     },
+    {
+        "key": "ctrl+shift+f9",
+        "command": "jupyter.restartkernel"
+    },
 ]

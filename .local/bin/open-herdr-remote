@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# sway launches kitty without ~/.local/bin in PATH, and herdr lives there.
+export PATH="$HOME/.local/bin:$PATH"
+
 hosts=(lab03 lab02 hpc)
 
 if [[ $# -eq 1 ]]; then

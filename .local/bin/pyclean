@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Remove Python litter (caches, bytecode, editor swap files) from a directory
+# tree, then prune any directories left empty. Never touches .git.
+#
+# Usage: pyclean [-n] [dir...]     (-n = dry run, defaults to current dir)
+
+set -euo pipefail
+
+dry_run=0
+if [[ ${1:-} == -n || ${1:-} == --dry-run ]]; then
+    dry_run=1
+    shift
+fi
+dirs=("${@:-.}")
+
+junk_dirs=(__pycache__ .pytest_cache .mypy_cache .ruff_cache .hypothesis .ipynb_checkpoints '*.egg-info')
+junk_files=('*.pyc' '*.pyo' '*.swp' '*.swo' '*.orig')
+
+dir_expr=()
+for d in "${junk_dirs[@]}"; do dir_expr+=(-o -name "$d"); done
+file_expr=()
+for f in "${junk_files[@]}"; do file_expr+=(-o -name "$f"); done
+
+if (( dry_run )); then
+    echo "Would remove:"
+    find "${dirs[@]}" -name .git -prune -o -type d \( -false "${dir_expr[@]}" \) -print -prune
+    find "${dirs[@]}" -name .git -prune -o -type f \( -false "${file_expr[@]}" \) -print
+    echo "Would remove empty directories:"
+    find "${dirs[@]}" -name .git -prune -o -type d -empty -print
+    exit 0
+fi
+
+find "${dirs[@]}" -name .git -prune -o -type d \( -false "${dir_expr[@]}" \) -prune -exec rm -rf {} +
+find "${dirs[@]}" -name .git -prune -o -type f \( -false "${file_expr[@]}" \) -exec rm -f {} +
+# -depth so nested dirs are removed before their now-empty parents.
+find "${dirs[@]}" -mindepth 1 -name .git -prune -o -depth -type d -empty -exec rmdir {} +

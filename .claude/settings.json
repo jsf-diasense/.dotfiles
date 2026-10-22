@@ -1,30 +1,31 @@
 {
-  "model": "opus[1m]",
+  "cleanupPeriodDays": 99999,
+  "model": "opus",
   "hooks": {
-    "Stop": [
+    "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.cwd // \"\"' | { read -r d; notify-send -a \"Claude Code\" -i \"$HOME/.local/share/icons/claude.svg\" \"Claude Code — done\" \"Finished working in ${d##*/}\"; } 2>/dev/null || true",
-            "async": true
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "jq -r '.message // \"Claude needs your input\"' | { read -r m; notify-send -u critical -a \"Claude Code\" -i \"$HOME/.local/share/icons/claude.svg\" \"Claude Code — input needed\" \"$m\"; } 2>/dev/null || true",
-            "async": true
+            "command": "bash '/home/jorge/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
           }
         ]
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); model=$(echo \"$input\" | jq -r '.model.display_name // empty'); used=$(echo \"$input\" | jq -r '.context_window | if .current_usage then ((.current_usage.input_tokens // 0) + (.current_usage.cache_creation_input_tokens // 0) + (.current_usage.cache_read_input_tokens // 0)) elif (.context_window_size and .used_percentage) then (.context_window_size * .used_percentage / 100 | floor) else (.total_input_tokens // 0) end'); left=$(echo \"$input\" | jq -r '.context_window.remaining_percentage // 100'); effort=$(echo \"$input\" | jq -r '.effort.level // empty'); [ -z \"$effort\" ] && effort=$(jq -r '.effortLevel // empty' \"$HOME/.claude/settings.json\" 2>/dev/null); eff=''; [ -n \"$effort\" ] && eff=\" · $effort\"; tok=$(awk -v n=\"$used\" 'BEGIN{if(n>=1000000)printf \"%.1fM\",n/1000000; else if(n>=1000)printf \"%.0fk\",n/1000; else printf \"%d\",n}'); printf '\\033[01;36m%s\\033[00m%s | ctx %s (%.0f%% left)' \"$model\" \"$eff\" \"$tok\" \"$left\""
+  },
   "effortLevel": "medium",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "theme": "dark",
-  "inputNeededNotifEnabled": false
+  "inputNeededNotifEnabled": false,
+  "feedbackDrafts": "off"
 }
